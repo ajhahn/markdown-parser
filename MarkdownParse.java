@@ -13,24 +13,22 @@ public class MarkdownParse {
         int currentIndex = 0;
        
         for (currentIndex = 0; currentIndex < markdown.length(); currentIndex++ ) {
-            boolean sign = false;
+            char exc = '!';
             int openBracket = markdown.indexOf("[", currentIndex);
             int closeBracket = markdown.indexOf("]", openBracket);
             int openParen = markdown.indexOf("(", closeBracket);
             int closeParen = markdown.indexOf(")", openParen);
-            if (markdown.contains("!")) {
-                sign = true;
+
+            try {
+                if (markdown.charAt(openBracket - 1) != exc) {
+                    toReturn.add(markdown.substring(openParen + 1, closeParen)); 
+                }
             }
-            if (sign = false) {
-            toReturn.add(markdown.substring(openParen + 1, closeParen)); 
-            }
-            else {
+            catch(Exception e) {
                 continue;
             }
-            currentIndex = closeParen + 1;
-            sign = false;
-            
 
+            currentIndex = closeParen;
         }
 
         return toReturn;
