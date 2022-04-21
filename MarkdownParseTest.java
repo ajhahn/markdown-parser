@@ -22,11 +22,34 @@ public void testFiletest() throws IOException {
     Path fileName = Path.of("test-file.md");
     String content = Files.readString(fileName);
     ArrayList<String> links = MarkdownParse.getLinks(content);
+    assertEquals(List.of("https://something.com", "some-thing.html"), links);
     
+}
+
+@Test
+public void testFiletest2() throws IOException {
+    Path fileName = Path.of("new-test-file.md");
+    String content = Files.readString(fileName);
+    ArrayList<String> links = MarkdownParse.getLinks(content);
+    assertEquals(List.of("https://ucsd-cse12-sp22.github.io/syllabus.html"), links);
+    
+}
+
+@Test
+public void testFiletest3() throws IOException {
+    Path fileName = Path.of("second-test-file.md");
+    String content = Files.readString(fileName);
+    ArrayList<String> links = MarkdownParse.getLinks(content);
+    assertEquals(List.of("https://ucsd-cse12-sp22.github.io/syllabus.html"), links);
+    
+}
+
+@Test
+public void testFiletest4() throws IOException {
+    Path fileName = Path.of("Third-test-file.md");
+    String content = Files.readString(fileName);
+    ArrayList<String> links = MarkdownParse.getLinks(content);
     ArrayList<String> expected = new ArrayList<String>();
-    expected.add("https://something.com");
-    expected.add("some-thing.html");
-    
     assertEquals(expected, links);
     
 }
