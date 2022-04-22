@@ -129,7 +129,6 @@ public void testFiletest8() throws IOException {
     String content = Files.readString(fileName);
     ArrayList<String> links = MarkdownParse.getLinks(content);
 
-    ArrayList<String> expected = new ArrayList<String>();
     assertEquals(List.of("a link on the first line"), links);
 }
 
