@@ -124,5 +124,12 @@ public void testFiletest6() throws IOException {
 
 //     assertEquals(List.of("a link on the first line"), links);
 // }
+public void testFile6() throws IOExcepttion {
 
+    Path fileName = Path.of("test-file6.md");
+    String content = Files.readString(fileName);
+    ArrayList<String> links = MarkdownParse.getLinks(content);
+    
+    ArrayList<String> expected = new ArrayList<String>();
+    assertEquals(expected, links);
 }
